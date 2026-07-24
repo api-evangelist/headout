@@ -1,0 +1,244 @@
+openapi: 3.1.0
+info:
+  title: Headout Partner Booking API
+  version: '2.0'
+  description: 'Headout''s public Partner API for accessing the experiences marketplace: products, categories, collections and subcategories (v2), plus inventory & pricing and the two-step booking flow (v1). Partners authenticate with a Headout-Auth API key. Production keys are prefixed pk_ and testing keys tk_.'
+  contact:
+    name: Headout Partnerships
+    email: partnerships@headout.com
+    url: https://github.com/headout/api-docs
+  termsOfService: https://www.headout.com/terms-of-use/
+servers:
+- url: https://www.headout.com
+  description: Production
+- url: https://sandbox.api.test-headout.com
+  description: Sandbox / testing (use tk_ keys)
+security:
+- HeadoutAuth: []
+tags:
+- name: Booking
+paths:
+  /api/public/v1/booking:
+    get:
+      operationId: listBookings
+      tags:
+      - Booking
+      summary: List bookings
+      parameters:
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Paginated list of bookings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createBooking
+      tags:
+      - Booking
+      summary: Create a booking (step 1)
+      description: Creates a booking in UNCAPTURED state. Capture it within 60 minutes via updateBooking or it transitions to CAPTURE_TIMEOUT.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingCreateRequest'
+      responses:
+        '200':
+          description: Booking created in UNCAPTURED state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/public/v1/booking/{id}:
+    get:
+      operationId: getBooking
+      tags:
+      - Booking
+      summary: Retrieve a booking
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The booking identifier.
+      responses:
+        '200':
+          description: A single booking
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateBooking
+      tags:
+      - Booking
+      summary: Capture / update a booking (step 2)
+      description: Capture a booking by setting status to PENDING, optionally attaching a partnerReferenceId. Idempotent — step 2 may be retried until it succeeds.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingUpdateRequest'
+      responses:
+        '200':
+          description: Booking transitioned to PENDING
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    BookingPage:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Booking'
+    BookingCreateRequest:
+      type: object
+      required:
+      - variantId
+      - inventoryId
+      - price
+      properties:
+        variantId:
+          type: string
+        inventoryId:
+          type: string
+        customersDetails:
+          type: object
+        variantInputFields:
+          type: object
+        price:
+          type: object
+    Pagination:
+      type: object
+      properties:
+        nextUrl:
+          type: string
+        prevUrl:
+          type: string
+        total:
+          type: integer
+        nextOffset:
+          type: integer
+    BookingUpdateRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - PENDING
+        partnerReferenceId:
+          type: string
+    Booking:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - UNCAPTURED
+          - PENDING
+          - COMPLETED
+          - CAPTURE_TIMEOUT
+        variantId:
+          type: string
+        inventoryId:
+          type: string
+        partnerReferenceId:
+          type: string
+    Error:
+      type: object
+      description: Headout error envelope.
+      properties:
+        status:
+          type: integer
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid Headout-Auth token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+      description: Pagination limit.
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Pagination offset.
+  securitySchemes:
+    HeadoutAuth:
+      type: apiKey
+      in: header
+      name: Headout-Auth
+      description: API token. Production keys are prefixed pk_, testing keys tk_.
+x-provenance:
+  generated: '2026-07-19'
+  method: generated
+  source: https://github.com/headout/api-docs
+  note: Headout publishes no OpenAPI. This spec was faithfully generated from the public Partner API documentation at github.com/headout/api-docs (conventions, apis/v1, apis/v2, error-handling). Only documented operations, parameters, and the documented error envelope are included; nothing was invented.
