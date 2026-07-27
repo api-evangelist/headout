@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/headout/api-docs
+notes: Cross-cutting request/response semantics for the Headout Partner API.
+authentication:
+  style: api-key
+  header: Headout-Auth
+  key_prefixes: { production: pk_, sandbox: tk_ }
+  ref: authentication/headout-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  path_prefix: /api/public/v{version}
+  legacy: /api/v1 (supported; migration to /api/public/v1 recommended)
+  ref: lifecycle/headout-lifecycle.yml
+pagination:
+  style: offset-limit
+  request_params: { offset: { default: 0 }, limit: { default: 20 } }
+  response_fields: [items, products, nextUrl, prevUrl, total, nextOffset]
+idempotency:
+  supported: true
+  mechanism: >-
+    The booking flow is a two-step create-then-capture. Step 2 (PUT
+    /booking/{id} -> status PENDING) is safe to retry: the docs instruct
+    partners to "keep on requesting the step 2 url until you get a success
+    message" on timeout/response issues. A partner-supplied partnerReferenceId
+    correlates the booking to the partner's own order for de-duplication.
+  fields: [partnerReferenceId]
+  retry_guidance: Retry step-2 capture until success; capture window is 60 minutes before CAPTURE_TIMEOUT.
+formats:
+  datetime:
+    fm-date-time: 'YYYY-MM-DDThh:mm:ss (ISO 8601 local, no timezone)'
+    fm-timestamp: milliseconds since epoch
+  currency: ISO 4217 currencyCode (e.g. USD, AED, GBP)
+  language: languageCode (default EN)
+error_envelope:
+  shape: '{ status, error: { code, message } }'
+  ref: errors/headout-error-codes.yml
+rate_limiting:
+  documented: false
+  notes: No rate-limit policy or headers documented in the public API docs.
+request_tracing:
+  documented: false

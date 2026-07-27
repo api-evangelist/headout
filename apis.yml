@@ -1,27 +1,223 @@
 aid: headout
 name: HeadOut
-description: HeadOut is a company surfaced as a portfolio company of 500-global, version-one-ventures
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  Headout is a global experiences marketplace that curates and sells tickets to
+  tours, attractions, events, shows and activities across major cities worldwide.
+  For developers, Headout operates a public Partner API (github.com/headout/api-docs)
+  that lets affiliates and resellers browse the catalog (products, categories,
+  collections and subcategories by city and language), pull live inventory and
+  per-person/per-group pricing for a variant, and place bookings through a two-step
+  create-then-capture flow. The API is versioned by URI path (v1 and v2 under
+  /api/public/), authenticates with a Headout-Auth API key (pk_ production / tk_
+  sandbox), paginates with offset/limit, and returns a structured error envelope.
+  A registrable seatmap iframe component is offered for seat selection. Headout is
+  backed by 500 Global and Version One Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/headout/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
 - version-one-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: partner-api-enriched
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://cdn-imgix.headout.com/static-pages/logo.png
 tags:
-- Company
-apis: []
+- Travel
+- Tours and Activities
+- Experiences
+- Attractions
+- Ticketing
+- Bookings
+- Marketplace
+- Partner API
+- Affiliate
+- Events
+apis:
+- aid: headout:headout-booking-api
+  name: HeadOut Booking API
+  description: The Booking API from HeadOut — 2 operation(s) for booking.
+  humanURL: https://github.com/headout/api-docs
+  baseURL: https://www.headout.com/api/public/v2
+  tags:
+  - Booking
+  properties:
+  - type: OpenAPI
+    url: openapi/headout-booking-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/headout/api-docs
+  - type: APIReference
+    url: https://github.com/headout/api-docs/tree/master/apis
+  - type: GettingStarted
+    url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+  - type: Authentication
+    url: authentication/headout-authentication.yml
+- aid: headout:headout-categories-api
+  name: HeadOut Categories API
+  description: The Categories API from HeadOut — 1 operation(s) for categories.
+  humanURL: https://github.com/headout/api-docs
+  baseURL: https://www.headout.com/api/public/v2
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/headout-categories-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/headout/api-docs
+  - type: APIReference
+    url: https://github.com/headout/api-docs/tree/master/apis
+  - type: GettingStarted
+    url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+  - type: Authentication
+    url: authentication/headout-authentication.yml
+- aid: headout:headout-collections-api
+  name: HeadOut Collections API
+  description: The Collections API from HeadOut — 1 operation(s) for collections.
+  humanURL: https://github.com/headout/api-docs
+  baseURL: https://www.headout.com/api/public/v2
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/headout-collections-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/headout/api-docs
+  - type: APIReference
+    url: https://github.com/headout/api-docs/tree/master/apis
+  - type: GettingStarted
+    url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+  - type: Authentication
+    url: authentication/headout-authentication.yml
+- aid: headout:headout-inventory-api
+  name: HeadOut Inventory API
+  description: The Inventory API from HeadOut — 1 operation(s) for inventory.
+  humanURL: https://github.com/headout/api-docs
+  baseURL: https://www.headout.com/api/public/v2
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/headout-inventory-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/headout/api-docs
+  - type: APIReference
+    url: https://github.com/headout/api-docs/tree/master/apis
+  - type: GettingStarted
+    url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+  - type: Authentication
+    url: authentication/headout-authentication.yml
+- aid: headout:headout-products-api
+  name: HeadOut Products API
+  description: The Products API from HeadOut — 1 operation(s) for products.
+  humanURL: https://github.com/headout/api-docs
+  baseURL: https://www.headout.com/api/public/v2
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/headout-products-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/headout/api-docs
+  - type: APIReference
+    url: https://github.com/headout/api-docs/tree/master/apis
+  - type: GettingStarted
+    url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+  - type: Authentication
+    url: authentication/headout-authentication.yml
+- aid: headout:headout-subcategories-api
+  name: HeadOut Subcategories API
+  description: The Subcategories API from HeadOut — 1 operation(s) for subcategories.
+  humanURL: https://github.com/headout/api-docs
+  baseURL: https://www.headout.com/api/public/v2
+  tags:
+  - Subcategories
+  properties:
+  - type: OpenAPI
+    url: openapi/headout-subcategories-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/headout/api-docs
+  - type: APIReference
+    url: https://github.com/headout/api-docs/tree/master/apis
+  - type: GettingStarted
+    url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+  - type: Authentication
+    url: authentication/headout-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/headout-agentic-access.yml
+- type: DomainSecurity
+  url: security/headout-domain-security.yml
 - type: Website
   url: https://headout.com
+- type: DeveloperPortal
+  url: https://github.com/headout/api-docs
+- type: Documentation
+  url: https://github.com/headout/api-docs
+- type: APIReference
+  url: https://github.com/headout/api-docs/tree/master/apis
+- type: GettingStarted
+  url: https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners
+- type: GitHubOrganization
+  url: https://github.com/headout
+- type: Blog
+  url: https://www.headout.com/blog/
+- type: Support
+  url: https://www.headout.com/help/
+- type: SignUp
+  url: https://partner.headout.com/affiliate/
+- type: TermsOfService
+  url: https://www.headout.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.headout.com/privacy-policy/
+- type: Authentication
+  url: authentication/headout-authentication.yml
+- type: Conventions
+  url: conventions/headout-conventions.yml
+- type: Idempotency
+  url: conventions/headout-conventions.yml
+- type: ErrorCatalog
+  url: errors/headout-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/headout-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/headout-lifecycle.yml
+- type: MCPServer
+  url: mcp/headout-mcp.yml
+- type: LLMsTxt
+  url: llms/headout-llms.txt
+- type: Overlay
+  url: overlays/headout-partner-overlay.yaml
+- type: Conformance
+  url: conformance/headout-conformance.yml
+- type: DataModel
+  url: data-model/headout-data-model.yml
+- type: Sandbox
+  url: sandbox/headout-sandbox.yml
+- type: Components
+  url: components/headout-components.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

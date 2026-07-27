@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/headout-partner-openapi.yml
+skills:
+- file: headout-browse-and-price.md
+  name: Browse the catalog and price a variant
+  api: openapi/headout-partner-openapi.yml
+  operations: [listProducts, listInventoryByVariant]
+- file: headout-book-and-capture.md
+  name: Create and capture a booking
+  api: openapi/headout-partner-openapi.yml
+  operations: [createBooking, updateBooking, getBooking]

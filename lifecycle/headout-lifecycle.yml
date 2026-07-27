@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/headout/api-docs
+versioning:
+  scheme: uri-path
+  current: v2
+  supported: [v1, v2]
+  path_prefix: /api/public/v{version}
+  docs: https://github.com/headout/api-docs/blob/master/conventions/basics.md
+deprecation:
+  policy_url: https://github.com/headout/api-docs/tree/master/conventions/deprecated
+  notes: >-
+    Legacy V1 base path /api/v1 remains supported but migration to /api/public/v1
+    is recommended. The POST /booking/create endpoint is documented as deprecated
+    in favor of POST /booking. A deprecated/ conventions folder tracks retired
+    naming schemes.
+  sunset_header: false
+sla:
+  documented: false
+status_page:
+  documented: false
+  notes: No public API status page located.
+deprecated_operations:
+- openapi/headout-partner-openapi.yml#createBooking-legacy (/booking/create, superseded by POST /booking)

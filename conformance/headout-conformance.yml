@@ -1,0 +1,31 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/headout-partner-openapi.yml
+standards:
+- id: apikey-auth
+  conforms: true
+  evidence: securityScheme type apiKey in header (Headout-Auth)
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 security scheme; API-key only
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: uses a custom { status, error:{code,message} } envelope, not application/problem+json
+- id: pagination
+  conforms: true
+  evidence: offset/limit request params with nextUrl/prevUrl/total/nextOffset response fields
+- id: idempotency
+  conforms: true
+  evidence: idempotent two-step booking capture with retryable step-2 and partnerReferenceId correlation
+- id: iso4217-currency
+  conforms: true
+  evidence: currencyCode parameters documented as ISO 4217
+- id: iso8601-datetime
+  conforms: true
+  evidence: fm-date-time format is ISO 8601 local datetime
+- id: json-api
+  conforms: false
+- id: fhir
+  conforms: false

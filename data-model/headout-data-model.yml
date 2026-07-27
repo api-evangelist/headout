@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/headout-partner-openapi.yml
+entities:
+- name: City
+  key: cityCode
+  notes: Top-level scope; catalog queries are city-scoped.
+- name: Product
+  key: id
+  fields: [cityCode, categoryId, subCategoryId, collectionId]
+- name: Category
+  key: id
+- name: Subcategory
+  key: id
+  fields: [categoryId]
+- name: Collection
+  key: id
+- name: Variant
+  key: variantId
+  notes: A bookable option of a product; the unit inventory & pricing hangs off.
+- name: Inventory
+  key: id
+  fields: [startDateTime, endDateTime, availability, remaining, pricing]
+- name: Booking
+  key: id
+  fields: [status, variantId, inventoryId, partnerReferenceId]
+relationships:
+- from: Product
+  to: City
+  type: belongs_to
+  via: cityCode
+- from: Product
+  to: Category
+  type: belongs_to
+  via: categoryId
+- from: Product
+  to: Subcategory
+  type: belongs_to
+  via: subCategoryId
+- from: Product
+  to: Collection
+  type: belongs_to
+  via: collectionId
+- from: Subcategory
+  to: Category
+  type: belongs_to
+  via: categoryId
+- from: Inventory
+  to: Variant
+  type: belongs_to
+  via: variantId
+- from: Booking
+  to: Variant
+  type: belongs_to
+  via: variantId
+- from: Booking
+  to: Inventory
+  type: belongs_to
+  via: inventoryId

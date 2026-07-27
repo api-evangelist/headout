@@ -1,0 +1,31 @@
+# Headout Partner API
+
+> Headout is a global experiences marketplace for tours, attractions, events and activities. Its public Partner API lets affiliates and resellers browse the catalog by city and language, pull live inventory and pricing, and place bookings through a two-step create-then-capture flow. Auth is a Headout-Auth API key (pk_ production / tk_ sandbox); versioned by URI path under /api/public/.
+
+## APIs
+- [Headout Partner API docs](https://github.com/headout/api-docs): Public Partner API documentation (conventions, v1/v2 endpoints, object models).
+- [Partner integration flow](https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners): Getting started, key issuance, two-step booking sequence.
+
+## Specs
+- [OpenAPI (generated)](openapi/headout-partner-openapi.yml): Faithfully generated from the public docs.
+
+## Conventions & semantics
+- [Conventions](conventions/headout-conventions.yml): Auth, versioning, pagination, idempotency, formats.
+- [Error codes](errors/headout-error-codes.yml): Error envelope + E_ codes.
+- [Authentication](authentication/headout-authentication.yml): Headout-Auth API-key profile.
+- [Lifecycle](lifecycle/headout-lifecycle.yml): Versioning + deprecation.
+- [Data model](data-model/headout-data-model.yml): Entity graph.
+- [Sandbox](sandbox/headout-sandbox.yml): Production vs sandbox, tk_ test keys.
+- [Components](components/headout-components.yml): Seatmap iframe.
+
+## Endpoints
+- GET /api/public/v2/products — list products for a city
+- GET /api/public/v2/categories — list categories
+- GET /api/public/v2/collections — list collections
+- GET /api/public/v2/subcategories — list subcategories
+- GET /api/public/v1/inventory/list-by/variant — inventory & pricing
+- GET /api/public/v1/booking, GET /booking/{id}, POST /booking, PUT /booking/{id} — booking flow
+
+## Contact
+- Partnerships: partnerships@headout.com / apikey@headout.com
+- Affiliate signup: https://partner.headout.com/affiliate/

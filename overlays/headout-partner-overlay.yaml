@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Headout Partner API
+  version: 1.0.0
+extends: openapi/headout-partner-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-generated: '2026-07-19'
+    x-apievangelist-source: https://github.com/headout/api-docs
+    x-api-lifecycle: production
+- target: $.info
+  update:
+    x-conventions: conventions/headout-conventions.yml
+    x-error-catalog: errors/headout-error-codes.yml
+    x-data-model: data-model/headout-data-model.yml
+- target: $.paths['/api/public/v1/booking'].post
+  update:
+    x-idempotency: >-
+      Two-step create-then-capture; capture (PUT /booking/{id} -> PENDING) is
+      retry-safe. partnerReferenceId correlates to the partner order.
+- target: $.paths['/api/public/v1/booking/{id}'].put
+  update:
+    x-idempotent: true

@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: headout.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 31 23:59:59 2026 GMT
+  hsts: false
+- host: www.headout.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 31 23:59:59 2026 GMT
+  hsts: false
+- host: sandbox.api.test-headout.com
+  https: false
+domains:
+- domain: headout.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: test-headout.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

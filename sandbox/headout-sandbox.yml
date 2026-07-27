@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/headout/api-docs/blob/master/conventions/basics.md
+environments:
+- name: production
+  base_url: https://www.headout.com
+  key_prefix: pk_
+  notes: Live environment; bookings created here are real/official.
+- name: sandbox
+  base_url: https://sandbox.api.test-headout.com
+  key_prefix: tk_
+  notes: Testing environment; use test (tk_) auth keys for internal testing.
+test_credentials:
+  mechanism: Test API keys (prefixed tk_) issued by email to partners for internal testing.
+  request_via: [partnerships@headout.com, apikey@headout.com]
+  note: >-
+    Headout does not publish shared/static test tokens or magic test values;
+    test keys are issued per partner. No public test card/identifier list.
+booking_test_flow:
+  notes: >-
+    Bookings can be exercised end-to-end in test using tk_ keys. The two-step
+    create (UNCAPTURED) then capture (PENDING) flow applies; capture must occur
+    within 60 minutes or the booking transitions to CAPTURE_TIMEOUT.

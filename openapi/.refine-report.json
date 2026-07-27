@@ -1,0 +1,24 @@
+{
+  "provider": "headout",
+  "sources": [
+    "headout-booking-api-openapi.yml",
+    "headout-categories-api-openapi.yml",
+    "headout-collections-api-openapi.yml",
+    "headout-inventory-api-openapi.yml",
+    "headout-products-api-openapi.yml",
+    "headout-subcategories-api-openapi.yml"
+  ],
+  "outputs": [
+    "headout-booking-api-openapi.yml",
+    "headout-categories-api-openapi.yml",
+    "headout-collections-api-openapi.yml",
+    "headout-inventory-api-openapi.yml",
+    "headout-products-api-openapi.yml",
+    "headout-subcategories-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

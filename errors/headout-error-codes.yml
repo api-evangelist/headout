@@ -1,0 +1,53 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/headout/api-docs/blob/master/apis/v2/error-handling.md
+derived_from: openapi/headout-partner-openapi.yml
+format: custom-envelope
+envelope:
+  description: >-
+    Errors return a JSON body with a top-level HTTP status and a nested error
+    object carrying a machine code and human message. Not RFC 9457 problem+json.
+  shape: |
+    {
+      "status": 400,
+      "error": {
+        "code": "[ERROR_CODE]",
+        "message": "[error_message]"
+      }
+    }
+  fields:
+    status: HTTP status code (integer)
+    error.code: stable machine-readable error code
+    error.message: human-readable message
+error_codes:
+- code: E_MISSING_PARAMETER
+  status: 400
+  message: 'Missing required parameter: [parameter_name]'
+  meaning: A mandatory request parameter was not supplied.
+  remediation: Supply the named required parameter (e.g. cityCode, variantId).
+- code: E_INVALID_ARGUMENT
+  status: 400
+  message: 'Invalid [enum_type] code: [provided_value]. [Enum_type] doesn''t exist.'
+  meaning: An enumeration value (cityCode, languageCode, currencyCode, ...) is invalid or unsupported.
+  remediation: Use a supported enum value from the catalog / ISO code lists.
+- code: E_INVALID_ARGUMENT
+  status: 400
+  message: '[specific_error_message]'
+  meaning: A parameter has an incorrect format or incompatible type.
+  remediation: Correct the parameter format/type to match the documented schema.
+- code: E_ERROR_PROCESSING_REQUEST
+  status: 500
+  message: Error processing request
+  meaning: An unhandled exception occurred during request handling.
+  remediation: Retry; if persistent, contact Headout partner support.
+http_statuses:
+- status: 200
+  meaning: Success.
+- status: 400
+  meaning: Bad request (missing/invalid parameter).
+- status: 401
+  meaning: Missing or invalid Headout-Auth token.
+- status: 404
+  meaning: Resource not found (e.g. unknown booking id).
+- status: 500
+  meaning: Server error processing the request.

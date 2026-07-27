@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/headout/api-docs/blob/master/ui-components/seatmap.md
+components:
+- family: Seatmap
+  name: Seat selection iframe
+  type: iframe
+  embed_url: https://www.headout.com/seatmap/tour-group/{productId}
+  example: https://www.headout.com/seatmap/tour-group/3023?date=2023-03-11&time=19:30:00&deviceType=MOBILE&currencyCode=GBP&showOnly=true
+  parameters:
+    date: 'YYYY-MM-DD'
+    time: 'HH:MM:SS'
+    currencyCode: ISO 4217 (e.g. GBP)
+    deviceType: [MOBILE, DESKTOP]
+    showOnly: 'optional; true = display without initialization'
+  communication: >-
+    Bidirectional via the postMessage API. Parent sends commands (incl. an
+    initPlugin event to pass config) and receives updates via message listeners.
+  restriction: >-
+    Domain must be registered/allow-listed with Headout to embed the iframe
+    ("Not all domains are allowed to use this Iframe to prevent misuse").
