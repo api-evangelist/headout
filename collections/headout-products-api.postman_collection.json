@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "f99a6fdf-2e8b-46fe-8ec7-c6ee4c5d550a",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb2e3d2a-40ee-4222-a658-27a880005cbb",
+          "name": "List products for a city",
+          "request": {
+            "name": "List products for a city",
+            "description": {
+              "content": "Fetch products for a given city, optionally filtered by collection, category or subcategory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "public",
+                "v2",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cityCode",
+                  "value": "<string>",
+                  "description": "(Required) The city code to fetch products for."
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "subCategoryId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "languageCode",
+                  "value": "EN"
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyCode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "campaignName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Pagination limit."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8db84c49-2661-4ab0-813d-f14dad34236f",
+              "name": "Paginated list of products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "public",
+                    "v2",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subCategoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languageCode",
+                      "value": "EN"
+                    },
+                    {
+                      "key": "currencyCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Headout-Auth",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextUrl\": \"string\",\n  \"prevUrl\": \"string\",\n  \"total\": 9054,\n  \"nextOffset\": 7056,\n  \"products\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"cityCode\": \"string\",\n      \"categoryId\": \"string\",\n      \"subCategoryId\": \"string\",\n      \"collectionId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"cityCode\": \"string\",\n      \"categoryId\": \"string\",\n      \"subCategoryId\": \"string\",\n      \"collectionId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ac16ce3-9429-4a78-8d2f-945a13c5a6f8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "public",
+                    "v2",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subCategoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languageCode",
+                      "value": "EN"
+                    },
+                    {
+                      "key": "currencyCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Headout-Auth",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2400,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02cd30a9-db21-4fe4-8270-e38bc909bc8a",
+              "name": "Missing or invalid Headout-Auth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "public",
+                    "v2",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cityCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subCategoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languageCode",
+                      "value": "EN"
+                    },
+                    {
+                      "key": "currencyCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Headout-Auth",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2400,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.headout.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Headout-Auth"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1653debc-7a75-4965-bcb9-b8e1d0dd3d20",
+    "name": "Headout Partner Booking Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Headout's public Partner API for accessing the experiences marketplace: products, categories, collections and subcategories (v2), plus inventory & pricing and the two-step booking flow (v1). Partners authenticate with a Headout-Auth API key. Production keys are prefixed pk_ and testing keys tk_.\n\nContact Support:\n Name: Headout Partnerships\n Email: partnerships@headout.com",
+      "type": "text/plain"
+    }
+  }
+}

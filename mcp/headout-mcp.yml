@@ -2,9 +2,8 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: openapi/headout-partner-openapi.yml
-note: >-
-  Headout publishes no hosted MCP server. This is a candidate tool list derived
-  1:1 from the documented Partner API operations.
+note: Headout publishes no hosted MCP server. This is a candidate tool list derived 1:1 from the documented
+  Partner API operations.
 server:
   name: headout-partner
   transport: http
@@ -36,3 +35,9 @@ tools:
 - name: update_booking
   description: Capture/update a booking (step 2, PENDING).
   source_operation: openapi/headout-partner-openapi.yml#updateBooking
+deployment:
+  mode: none
+  verified: derived
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census

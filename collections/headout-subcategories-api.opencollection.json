@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Headout Partner Booking Subcategories API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Headout-Auth",
+      "value": "{{Headout-Auth}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subcategories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subcategories for a city",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.headout.com/api/public/v2/subcategories",
+            "params": [
+              {
+                "name": "cityCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "languageCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Pagination limit."
+              }
+            ]
+          },
+          "docs": "List subcategories for a city"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

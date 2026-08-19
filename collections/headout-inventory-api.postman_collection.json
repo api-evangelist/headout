@@ -1,0 +1,272 @@
+{
+  "item": [
+    {
+      "id": "4ddc8ca5-16b1-4620-bcfd-4dc1636ed170",
+      "name": "Inventory",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4187d68-8e3d-47f5-941b-b1530d397e49",
+          "name": "List inventory and pricing by variant",
+          "request": {
+            "name": "List inventory and pricing by variant",
+            "description": {
+              "content": "Fetch availability and pricing for a variant across a date-time window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "public",
+                "v1",
+                "inventory",
+                "list-by",
+                "variant"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "variantId",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the variant for which the inventory needs to be fetched."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDateTime",
+                  "value": "<string>",
+                  "description": "fm-date-time; defaults to current timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDateTime",
+                  "value": "<string>",
+                  "description": "fm-date-time; defaults to infinity if unspecified."
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyCode",
+                  "value": "<string>",
+                  "description": "ISO 4217 currency code (e.g. USD"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Pagination limit."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b803bd0e-3e1e-49d9-b3af-e1bedd709135",
+              "name": "Paginated list of inventory records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "public",
+                    "v1",
+                    "inventory",
+                    "list-by",
+                    "variant"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "variantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Headout-Auth",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextUrl\": \"string\",\n  \"prevUrl\": \"string\",\n  \"total\": 6734,\n  \"nextOffset\": 2259,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"startDateTime\": \"string\",\n      \"endDateTime\": \"string\",\n      \"availability\": \"UNLIMITED\",\n      \"remaining\": 851,\n      \"pricing\": {\n        \"persons\": {},\n        \"groups\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"startDateTime\": \"string\",\n      \"endDateTime\": \"string\",\n      \"availability\": \"CLOSED\",\n      \"remaining\": 9052,\n      \"pricing\": {\n        \"persons\": {},\n        \"groups\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "187455a0-5348-4e4d-9e54-89e0af10f7e2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "public",
+                    "v1",
+                    "inventory",
+                    "list-by",
+                    "variant"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "variantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Headout-Auth",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6296,\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.headout.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Headout-Auth"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c9d8f4f1-b6bc-4bc8-869a-2a54c50d3d45",
+    "name": "Headout Partner Booking Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Headout's public Partner API for accessing the experiences marketplace: products, categories, collections and subcategories (v2), plus inventory & pricing and the two-step booking flow (v1). Partners authenticate with a Headout-Auth API key. Production keys are prefixed pk_ and testing keys tk_.\n\nContact Support:\n Name: Headout Partnerships\n Email: partnerships@headout.com",
+      "type": "text/plain"
+    }
+  }
+}
