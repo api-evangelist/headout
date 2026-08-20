@@ -39,6 +39,17 @@ image: https://cdn-imgix.headout.com/static-pages/logo.png
 tags:
 - Travel
 - Tours and Activities
+- Experience
+- Attractions
+- Ticketing
+- Bookings
+- Marketplace
+- Partner API
+- Affiliates
+- Event
+tags_raw:
+- Travel
+- Tours and Activities
 - Experiences
 - Attractions
 - Ticketing
@@ -90,6 +101,8 @@ apis:
   humanURL: https://github.com/headout/api-docs
   baseURL: https://www.headout.com/api/public/v2
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -126,6 +139,8 @@ apis:
   humanURL: https://github.com/headout/api-docs
   baseURL: https://www.headout.com/api/public/v2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
