@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Headout Partner Booking API
   version: '2.0'
@@ -142,17 +142,19 @@ components:
           type: object
         price:
           type: object
-    Pagination:
+    Error:
       type: object
+      description: Headout error envelope.
       properties:
-        nextUrl:
-          type: string
-        prevUrl:
-          type: string
-        total:
+        status:
           type: integer
-        nextOffset:
-          type: integer
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     BookingUpdateRequest:
       type: object
       required:
@@ -164,6 +166,17 @@ components:
           - PENDING
         partnerReferenceId:
           type: string
+    Pagination:
+      type: object
+      properties:
+        nextUrl:
+          type: string
+        prevUrl:
+          type: string
+        total:
+          type: integer
+        nextOffset:
+          type: integer
     Booking:
       type: object
       properties:
@@ -182,28 +195,32 @@ components:
           type: string
         partnerReferenceId:
           type: string
-    Error:
-      type: object
-      description: Headout error envelope.
-      properties:
-        status:
-          type: integer
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
+  parameters:
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Pagination offset.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+      description: Pagination limit.
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Missing or invalid Headout-Auth token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid Headout-Auth token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -214,23 +231,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 20
-      description: Pagination limit.
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-      description: Pagination offset.
   securitySchemes:
     HeadoutAuth:
       type: apiKey

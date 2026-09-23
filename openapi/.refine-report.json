@@ -1,12 +1,7 @@
 {
   "provider": "headout",
   "sources": [
-    "headout-booking-api-openapi.yml",
-    "headout-categories-api-openapi.yml",
-    "headout-collections-api-openapi.yml",
-    "headout-inventory-api-openapi.yml",
-    "headout-products-api-openapi.yml",
-    "headout-subcategories-api-openapi.yml"
+    "_original/headout-partner-openapi.yml"
   ],
   "outputs": [
     "headout-booking-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "headout-partner-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "headout-booking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "headout-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "headout-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "headout-inventory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "headout-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "headout-subcategories-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
