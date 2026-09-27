@@ -116,6 +116,37 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Booking:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - UNCAPTURED
+          - PENDING
+          - COMPLETED
+          - CAPTURE_TIMEOUT
+        variantId:
+          type: string
+        inventoryId:
+          type: string
+        partnerReferenceId:
+          type: string
+    Error:
+      type: object
+      description: Headout error envelope.
+      properties:
+        status:
+          type: integer
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     BookingPage:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -142,19 +173,6 @@ components:
           type: object
         price:
           type: object
-    Error:
-      type: object
-      description: Headout error envelope.
-      properties:
-        status:
-          type: integer
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     BookingUpdateRequest:
       type: object
       required:
@@ -177,24 +195,25 @@ components:
           type: integer
         nextOffset:
           type: integer
-    Booking:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - UNCAPTURED
-          - PENDING
-          - COMPLETED
-          - CAPTURE_TIMEOUT
-        variantId:
-          type: string
-        inventoryId:
-          type: string
-        partnerReferenceId:
-          type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid Headout-Auth token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     Offset:
       name: offset
@@ -212,25 +231,6 @@ components:
         type: integer
         default: 20
       description: Pagination limit.
-  responses:
-    Unauthorized:
-      description: Missing or invalid Headout-Auth token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     HeadoutAuth:
       type: apiKey
