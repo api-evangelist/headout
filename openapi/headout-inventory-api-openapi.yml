@@ -64,14 +64,18 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Pagination:
+      type: object
+      properties:
+        nextUrl:
+          type: string
+        prevUrl:
+          type: string
+        total:
+          type: integer
+        nextOffset:
+          type: integer
     Error:
       type: object
       description: Headout error envelope.
@@ -85,15 +89,6 @@ components:
               type: string
             message:
               type: string
-    InventoryPage:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Inventory'
     Inventory:
       type: object
       properties:
@@ -118,17 +113,15 @@ components:
               type: object
             groups:
               type: object
-    Pagination:
-      type: object
-      properties:
-        nextUrl:
-          type: string
-        prevUrl:
-          type: string
-        total:
-          type: integer
-        nextOffset:
-          type: integer
+    InventoryPage:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Inventory'
   parameters:
     Offset:
       name: offset
@@ -146,6 +139,13 @@ components:
         type: integer
         default: 20
       description: Pagination limit.
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     HeadoutAuth:
       type: apiKey

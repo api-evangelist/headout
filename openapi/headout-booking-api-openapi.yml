@@ -115,25 +115,37 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid Headout-Auth token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Booking:
+    Pagination:
       type: object
       properties:
-        id:
+        nextUrl:
           type: string
-        status:
+        prevUrl:
           type: string
-          enum:
-          - UNCAPTURED
-          - PENDING
-          - COMPLETED
-          - CAPTURE_TIMEOUT
-        variantId:
-          type: string
-        inventoryId:
-          type: string
-        partnerReferenceId:
-          type: string
+        total:
+          type: integer
+        nextOffset:
+          type: integer
     Error:
       type: object
       description: Headout error envelope.
@@ -147,6 +159,17 @@ components:
               type: string
             message:
               type: string
+    BookingUpdateRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - PENDING
+        partnerReferenceId:
+          type: string
     BookingPage:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -173,47 +196,24 @@ components:
           type: object
         price:
           type: object
-    BookingUpdateRequest:
+    Booking:
       type: object
-      required:
-      - status
       properties:
+        id:
+          type: string
         status:
           type: string
           enum:
+          - UNCAPTURED
           - PENDING
+          - COMPLETED
+          - CAPTURE_TIMEOUT
+        variantId:
+          type: string
+        inventoryId:
+          type: string
         partnerReferenceId:
           type: string
-    Pagination:
-      type: object
-      properties:
-        nextUrl:
-          type: string
-        prevUrl:
-          type: string
-        total:
-          type: integer
-        nextOffset:
-          type: integer
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid Headout-Auth token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     Offset:
       name: offset

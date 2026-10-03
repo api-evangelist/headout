@@ -78,19 +78,30 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid Headout-Auth token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Pagination:
+      type: object
+      properties:
+        nextUrl:
+          type: string
+        prevUrl:
+          type: string
+        total:
+          type: integer
+        nextOffset:
+          type: integer
     Error:
       type: object
       description: Headout error envelope.
@@ -104,15 +115,6 @@ components:
               type: string
             message:
               type: string
-    ProductPage:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          products:
-            type: array
-            items:
-              $ref: '#/components/schemas/Product'
     Product:
       type: object
       properties:
@@ -128,17 +130,15 @@ components:
           type: string
         collectionId:
           type: string
-    Pagination:
-      type: object
-      properties:
-        nextUrl:
-          type: string
-        prevUrl:
-          type: string
-        total:
-          type: integer
-        nextOffset:
-          type: integer
+    ProductPage:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          products:
+            type: array
+            items:
+              $ref: '#/components/schemas/Product'
   parameters:
     Offset:
       name: offset
