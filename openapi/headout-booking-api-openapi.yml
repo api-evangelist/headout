@@ -116,17 +116,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    BookingUpdateRequest:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - PENDING
-        partnerReferenceId:
-          type: string
     Pagination:
       type: object
       properties:
@@ -138,6 +127,39 @@ components:
           type: integer
         nextOffset:
           type: integer
+    BookingUpdateRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - PENDING
+        partnerReferenceId:
+          type: string
+    Error:
+      type: object
+      description: Headout error envelope.
+      properties:
+        status:
+          type: integer
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    BookingPage:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/Booking'
     BookingCreateRequest:
       type: object
       required:
@@ -173,28 +195,6 @@ components:
           type: string
         partnerReferenceId:
           type: string
-    Error:
-      type: object
-      description: Headout error envelope.
-      properties:
-        status:
-          type: integer
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-    BookingPage:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/Booking'
   parameters:
     Limit:
       name: limit
@@ -219,14 +219,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid Headout-Auth token
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Missing or invalid Headout-Auth token
       content:
         application/json:
           schema:

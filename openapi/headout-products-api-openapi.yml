@@ -78,30 +78,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ProductPage:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          products:
-            type: array
-            items:
-              $ref: '#/components/schemas/Product'
-    Product:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        cityCode:
-          type: string
-        categoryId:
-          type: string
-        subCategoryId:
-          type: string
-        collectionId:
-          type: string
     Pagination:
       type: object
       properties:
@@ -126,6 +102,30 @@ components:
               type: string
             message:
               type: string
+    ProductPage:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          products:
+            type: array
+            items:
+              $ref: '#/components/schemas/Product'
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        cityCode:
+          type: string
+        categoryId:
+          type: string
+        subCategoryId:
+          type: string
+        collectionId:
+          type: string
   parameters:
     Limit:
       name: limit
@@ -144,14 +144,14 @@ components:
         default: 0
       description: Pagination offset.
   responses:
-    Unauthorized:
-      description: Missing or invalid Headout-Auth token
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Missing or invalid Headout-Auth token
       content:
         application/json:
           schema:
