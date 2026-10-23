@@ -26,6 +26,122 @@ edges:
     year: '2014'
   detected_by: sweep-accelerator-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: OCTO self-certification directory (certify.octo.travel)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://certify.octo.travel/verify
+  category: OCTO API self-certification
+  contract_reference:
+    register: OCTO self-certification directory (certify.octo.travel)
+    standard: OCTO (Open Connectivity for Tours, Activities & Attractions) API specification
+    spec_file: null
+    spec_url: https://app.swaggerhub.com/apis-docs/OCTO-API/OCTO-API/1.0
+    standard_repo: octo
+    role: octo-certified
+    registrations:
+    - registered_name: Headout
+      register_status: certified
+      register_id: vWyOLG6Q
+      matched_domain: headout.com
+      matched_by: domain
+      certificates:
+      - certificate_id: e6fd3d3b-dcc7-45d6-b7af-6707dcf41f19
+        type: supplier
+        status: APPROVED
+        is_active: false
+        certified_at: '2026-09-15'
+        revoked_at: null
+      - certificate_id: 66600c1f-db48-4583-a949-3b8c31321bc2
+        type: supplier
+        status: APPROVED
+        is_active: false
+        certified_at: '2026-09-15'
+        revoked_at: null
+      - certificate_id: eac375ef-abe6-4fd4-94ef-7d621d90264a
+        type: supplier
+        status: APPROVED
+        is_active: true
+        certified_at: '2026-09-26'
+        revoked_at: null
+      identity: wikidata Q56290808 'Headout' P856 https://www.headout.com
+    detected_by: sweep-octo-tours-activities.py
+    detected: '2026-10-23'
+    certified_products:
+    - product: OCTO supplier certification
+      lapsed: false
+      certified_at: '2026-09-26'
+      certificate_id: eac375ef-abe6-4fd4-94ef-7d621d90264a
+    signal_note: certified_products = one entry per OCTO certification type (reseller / supplier), never per certificate;
+      lapsed = the certificate is no longer active (is_active false)
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-octo-tours-activities.py
+  first_seen: '2026-10-23'
+- partner_name: OCTO Known Implementations (docs.octo.travel)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://docs.octo.travel/additional-resources/known-implementations
+  category: OCTO API implementation (live, self-reported)
+  contract_reference:
+    register: OCTO Known Implementations (docs.octo.travel)
+    standard: OCTO (Open Connectivity for Tours, Activities & Attractions) API specification
+    spec_file: null
+    spec_url: https://app.swaggerhub.com/apis-docs/OCTO-API/OCTO-API/1.0
+    standard_repo: octo
+    role: octo-implementer-reseller
+    registrations:
+    - registered_name: Headout
+      register_status: live
+      register_id: reseller:Headout
+      matched_domain: headout.com
+      matched_by: domain
+      implementation_side: reseller
+      capabilities:
+      - OCTO Core
+      - pricing
+      octo_membership: Technology Member
+    detected_by: sweep-octo-tours-activities.py
+    detected: '2026-10-23'
+    signal_note: 'participation only: a LIVE row on OCTO''s volunteer-maintained Known Implementations sheet (self-reported,
+      not certified)'
+  detected_by: sweep-octo-tours-activities.py
+  first_seen: '2026-10-23'
+- partner_name: OCTO member directory (octo.travel)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://octo.travel/members
+  category: OCTO standards body membership (tours, activities & attractions connectivity)
+  contract_reference:
+    register: OCTO member directory (octo.travel)
+    standard: OCTO (Open Connectivity for Tours, Activities & Attractions) API specification
+    spec_file: null
+    spec_url: https://app.swaggerhub.com/apis-docs/OCTO-API/OCTO-API/1.0
+    standard_repo: octo
+    role: technology-member
+    registrations:
+    - registered_name: Headout Inc.
+      register_status: member
+      register_id: OW48JAXW
+      matched_domain: headout.com
+      matched_by: domain+local-verified
+      member_type: technology-member
+    detected_by: sweep-octo-tours-activities.py
+    detected: '2026-10-23'
+    signal_note: 'participation only: OCTO standards-body membership; membership certifies nothing'
+  detected_by: sweep-octo-tours-activities.py
+  first_seen: '2026-10-23'
+  partner_tier: Technology Member - Over USD $5M
 generated: '2026-10-21'
 method: searched
 source:
@@ -40,3 +156,10 @@ checked:
 - https://www.antler.co/portfolio
 - https://www.techstars.com/portfolio
 - https://www.ycombinator.com/companies
+- https://certify.octo.travel/api/certification/public
+- https://certify.octo.travel/verify
+- https://docs.google.com/spreadsheets/d/1UIgUYAPO3SUsdoGmg5xIGHIBHWHOx7XfQCOzOTML6ms
+- https://docs.octo.travel/
+- https://docs.octo.travel/additional-resources/known-implementations
+- https://octo.travel/api/members
+- https://octo.travel/members
