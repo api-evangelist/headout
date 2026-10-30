@@ -64,6 +64,127 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-HeadOut is a company surfaced as a portfolio company of 500-global, version-one-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Headout is a global experiences marketplace that curates and sells tickets to tours, attractions, events, shows and activities across major cities worldwide. For developers, Headout operates a public Partner API (github.com/headout/api-docs) that lets affiliates and resellers browse the catalog (products, categories, collections and subcategories by city and language), pull live inventory and per-person/per-group pricing for a variant, and place bookings through a two-step create-then-capture flow. The API is versioned by URI path (v1 and v2 under /api/public/), authenticates with a Headout-Auth API key (pk_ production / tk_ sandbox), paginates with offset/limit, and returns a structured error envelope. A registrable seatmap iframe component is offered for seat selection. Headout is backed by 500 Global and Version One Ventures.
 
-Backed by: 500-global, version-one-ventures — https://headout.com
+**Areas:** Travel · Tours and Activities · Experience · Attractions · Ticketing · Booking · Marketplace · Partner API · Affiliates · Event
+
+## HeadOut on APIs.io
+
+Everything profiled for HeadOut is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/headout/](https://apis.io/providers/headout/)** — or go straight to one of the APIs or properties below.
+
+### APIs (6)
+
+- [HeadOut Booking API](https://apis.io/apis/headout/headout-booking-api/) — The Booking API from HeadOut — 2 operation(s) for booking.
+- [HeadOut Categories API](https://apis.io/apis/headout/headout-categories-api/) — The Categories API from HeadOut — 1 operation(s) for categories.
+- [HeadOut Collections API](https://apis.io/apis/headout/headout-collections-api/) — The Collections API from HeadOut — 1 operation(s) for collections.
+- [HeadOut Inventory API](https://apis.io/apis/headout/headout-inventory-api/) — The Inventory API from HeadOut — 1 operation(s) for inventory.
+- [HeadOut Products API](https://apis.io/apis/headout/headout-products-api/) — The Products API from HeadOut — 1 operation(s) for products.
+- [HeadOut Subcategories API](https://apis.io/apis/headout/headout-subcategories-api/) — The Subcategories API from HeadOut — 1 operation(s) for subcategories.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [headout-partner](https://apis.io/servers/headout/headout-partner/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Headout Agentic Access](https://apis.io/agentic-access/headout/headout-agentic-access/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Headout Partner Booking API](https://apis.io/collections/headout/open-headout-booking-api/)
+- [Headout Partner Booking Categories API](https://apis.io/collections/headout/open-headout-categories-api/)
+- [Headout Partner Booking Collections API](https://apis.io/collections/headout/open-headout-collections-api/)
+- [Headout Partner Booking Inventory API](https://apis.io/collections/headout/open-headout-inventory-api/)
+- [Headout Partner Booking Products API](https://apis.io/collections/headout/open-headout-products-api/)
+- [Headout Partner Booking Subcategories API](https://apis.io/collections/headout/open-headout-subcategories-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Headout Partner Overlay](https://apis.io/overlays/headout/headout-partner-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Headout Authentication](https://apis.io/security/headout/headout-authentication/)
+- [Headout Domain Security](https://apis.io/security/headout/headout-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://headout.com)
+- [Documentation](https://github.com/headout/api-docs)
+- [Getting started](https://github.com/headout/api-docs/wiki/Integration-flow-for-Partners)
+- [API reference](https://github.com/headout/api-docs/tree/master/apis)
+- [Sign up](https://partner.headout.com/affiliate/)
+- [Support](https://www.headout.com/help/)
+- [Blog](https://www.headout.com/blog/)
+- [Terms of service](https://www.headout.com/terms-of-use/)
+- [Privacy policy](https://www.headout.com/privacy-policy/)
+- [GitHub](https://github.com/headout)
+
+## API Evangelist rating
+
+**Kin Score 19.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 13.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 20.8 |
+| Access clarity | 13.2 |
+
+**Agent readiness 24.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/headout/](https://apis.io/providers/headout/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for HeadOut: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/headout/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
